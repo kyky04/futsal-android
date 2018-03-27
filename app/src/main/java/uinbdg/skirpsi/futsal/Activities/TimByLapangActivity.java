@@ -2,7 +2,6 @@ package uinbdg.skirpsi.futsal.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +25,6 @@ import retrofit2.Retrofit;
 import uinbdg.skirpsi.futsal.Adapter.AdapterTim;
 import uinbdg.skirpsi.futsal.Model.DataItem;
 import uinbdg.skirpsi.futsal.Model.DataItemTeam;
-import uinbdg.skirpsi.futsal.Model.Team;
 import uinbdg.skirpsi.futsal.Model.TeamDetailResponse;
 import uinbdg.skirpsi.futsal.Model.TeamResponse;
 import uinbdg.skirpsi.futsal.R;
@@ -45,7 +43,7 @@ public class TimByLapangActivity extends AppCompatActivity {
     @BindView(R.id.search_bar)
     CardView searchBar;
     @BindView(R.id.recycler_view_tim)
-    RecyclerView recyclerViewPeserta;
+    RecyclerView recyclerViewTim;
 
     List<DataItemTeam> dataItemTeamList;
 
@@ -77,7 +75,7 @@ public class TimByLapangActivity extends AppCompatActivity {
         futsalApi = retrofit.create(FutsalApi.class);
         dataItemTeamList = new ArrayList<>();
 
-        recyclerViewPeserta.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewTim.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -105,8 +103,8 @@ public class TimByLapangActivity extends AppCompatActivity {
                         dataItemTeamList.add(response.body().getData().get(i));
                     }
                     adapterPeserta = new AdapterTim(TimByLapangActivity.this, dataItemTeamList);
-                    recyclerViewPeserta.setAdapter(adapterPeserta);
-                    recyclerViewPeserta.setHasFixedSize(true);
+                    recyclerViewTim.setAdapter(adapterPeserta);
+                    recyclerViewTim.setHasFixedSize(true);
                     adapterPeserta.setOnItemClickListener(new AdapterTim.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {

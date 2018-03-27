@@ -3,6 +3,8 @@ package uinbdg.skirpsi.futsal.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class DataItemLapangan {
 
 	@SerializedName("nama")
@@ -25,6 +27,17 @@ public class DataItemLapangan {
 
 	@SerializedName("longitude")
 	private double longitude;
+
+	@SerializedName("team")
+	private List<DataItemTeam> dataItemTeamList;
+
+	public List<DataItemTeam> getDataItemTeamList() {
+		return dataItemTeamList;
+	}
+
+	public void setDataItemTeamList(List<DataItemTeam> dataItemTeamList) {
+		this.dataItemTeamList = dataItemTeamList;
+	}
 
 	private  float distance;
 

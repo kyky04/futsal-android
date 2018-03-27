@@ -7,17 +7,17 @@
 
 
     <RelativeLayout
-        android:padding="@dimen/spacing_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
 
         <LinearLayout
             android:id="@+id/view_item"
-            android:background="?attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
             android:orientation="vertical">
 
             <LinearLayout
@@ -107,7 +107,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/lay"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -138,8 +139,17 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_jumlah_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Jumlah Team"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 
         </LinearLayout>
+
 
     </RelativeLayout>
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uinbdg.skirpsi.futsal.Model.DataItem;
+import butterknife.OnClick;
 import uinbdg.skirpsi.futsal.Model.DataItemLapangan;
 import uinbdg.skirpsi.futsal.R;
 import uinbdg.skirpsi.futsal.Util.GPSTracker;
@@ -35,6 +35,10 @@ public class AdapterLapangan extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
+
+    @OnClick(R.id.tv_jumlah_team)
+    public void onViewClicked() {
+    }
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -65,6 +69,8 @@ public class AdapterLapangan extends RecyclerView.Adapter<RecyclerView.ViewHolde
         LinearLayout viewItem;
         @BindView(R.id.et_distance)
         EditText etDistance;
+        @BindView(R.id.tv_jumlah_team)
+        TextView tvJumlahTeam;
 
         public OriginalViewHolder(View v) {
             super(v);
@@ -95,6 +101,7 @@ public class AdapterLapangan extends RecyclerView.Adapter<RecyclerView.ViewHolde
             String distance = String.valueOf(getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), lapanganList.get(position).getLatitude(), lapanganList.get(position).getLongitude()) / 1000) + " Km";
 //            Integer jarak = Integer.valueOf(distance);
             ((OriginalViewHolder) holder).etDistance.setText(String.valueOf(distance));
+            ((OriginalViewHolder) holder).tvJumlahTeam.setText("Jumlah Tim : "+lapanganList.get(position).getDataItemTeamList().size());
         }
 
         ((OriginalViewHolder) holder).viewItem.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +122,7 @@ public class AdapterLapangan extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Location.distanceBetween(startLati, startLongi, goalLati, goalLongi, resultArray);
         return resultArray[0];
     }
+
     public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
         this.onLoadMoreListener = onLoadMoreListener;
     }
